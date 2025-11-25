@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <meta name="copyright" content="MACode ID, https://macodeid.com/">
+
+  <title>GeoPRAS</title>
+  <link rel="stylesheet" href="assets/css/bpg-banner-caps.css">
+  <link rel="stylesheet" href="assets/css/maicons.css">
+  <link rel="stylesheet" href="assets/css/bootstrap.css">
+  <link rel="stylesheet" href="assets/vendor/owl-carousel/css/owl.carousel.css">
+  <link rel="stylesheet" href="assets/vendor/animate/animate.css">
+  <link rel="stylesheet" href="assets/css/theme.css">
+
+  <!-- GRID CSS: always 3 per row on wide screens, responsive -->
+  <style>
+    /* GRID LAYOUT FOR 3 PER ROW */
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* always 3 across on wide screens */
+      gap: 24px;
+      justify-items: center; /* center items inside the grid cells */
+      width: 100%;
+      padding: 12px 0;
+      box-sizing: border-box;
+    }
+
+    .news-card {
+      width: 100%;
+      max-width: 360px; /* card max width */
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* Keep your card style but ensure images behave */
+    .news-card.card-blog {
+      background: #fff;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .news-card .header .post-thumb img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .news-card .body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 140px;
+    }
+
+    .post-excerpt {
+      margin: 8px 0 12px;
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* Responsive breakpoints */
+    @media (max-width: 992px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 576px) {
+      .news-grid {
+        grid-template-columns: repeat(1, 1fr);
+      }
+      .news-card .header .post-thumb img {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Back to top button -->
+  <div class="back-to-top"></div>
+
+  <header>
+   
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img src="assets/logoGeopras.jpg" alt="GeoPRAS Logo" height="50">
+        </a>
+        <style>
+          img.logo {
+    max-width: 100%;  /* Ensures the logo doesn't exceed its container */
+    height: auto;      /* Maintains aspect ratio */
+    display: block;    /* Prevents inline spacing issues */
+}
+body, html {
+    overflow-x: hidden; /* Prevents horizontal scrolling */
+}
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+        </style>
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupport">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">მთავარი</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">ჩვენს შესახებ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">ქირურგები</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">სიახლეები</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="">კონტაქტი</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-primary ml-lg-3" href="login.html">Login / Register</a>
+            </li>
+          </ul>
+        </div> <!-- .navbar-collapse -->
+      </div> <!-- .container -->
+    </nav>
+  </header>
+
+  <div class="page-banner overlay-dark bg-image" style="background-image: url(../assets/img/bg_image_1.jpg);">
+    <div class="banner-section">
+      <div class="container text-center wow fadeInUp">
+        <nav aria-label="Breadcrumb">
+          <ol class="breadcrumb breadcrumb-dark bg-transparent justify-content-center py-0 mb-2">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Blog</li>
+          </ol>
+        </nav>
+        <h1 class="font-weight-normal">News</h1>
+      </div> <!-- .container -->
+    </div> <!-- .banner-section -->
+  </div> <!-- .page-banner -->
+
+  <div class="page-section">
+    <div class="container">
+      <div class="row custom-center">
+
+        <div class="col-lg-8">
+          <!-- NEWS GRID (dynamic) -->
+          <div id="posts" class="news-grid">
+            <!-- fallback shown until JS populates -->
+            <div class="text-center w-100" id="posts-fallback" style="padding:40px 0;">
+              <p>Loading news…</p>
+            </div>
+          </div>
+        </div> 
+      </div> <!-- .row -->
+    </div> <!-- .container -->
+  </div> <!-- .page-section -->
+
+  <footer class="page-footer">
+    <div class="container">
+      <div class="row px-md-3">
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>GeoPRAS</h5>
+          <ul class="footer-menu">
+            <li><a href="#">ჩვენს შესახებ</a></li>
+            <li><a href="#">ბლა</a></li>
+            <li><a href="#">ბლა</a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>წესები და პირობები</h5>
+          <ul class="footer-menu">
+            <li><a href="#">წესები & პირობები</a></li>
+            <li><a href="#">კონფიდენციალურობა</a></li>
+            <li><a href="#"></a></li>
+            <li><a href="#"></a></li>
+          </ul>
+        </div>
+        <!-- <div class="col-sm-6 col-lg-3 py-3">
+          <h5>Our partner</h5>
+          <ul class="footer-menu">
+            <li><a href="#">One-Fitness</a></li>
+            <li><a href="#">One-Drugs</a></li>
+            <li><a href="#">One-Live</a></li>
+          </ul>
+        </div> -->
+        <div class="col-sm-6 col-lg-3 py-3">
+          <h5>კონტაქტი</h5>
+          <p class="footer-link mt-2">ვიღაცის ქუჩა N რაღაც</p>
+          <a href="#" class="footer-link">5555555555</a>
+          <a href="#" class="footer-link">inf0@info.geopras</a>
+
+          <h5 class="mt-3">სოციალური მედია</h5>
+          <div class="footer-sosmed mt-3">
+            <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-twitter"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-google-plus-g"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-instagram"></span></a>
+            <a href="#" target="_blank"><span class="mai-logo-linkedin"></span></a>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <p id="copyright">Copyright &copy; 2025 <a" target="_blank">Treliazori</a>. All right reserved</p>
+    </div>
+  </footer>
+
+<script src="../assets/js/jquery-3.5.1.min.js"></script>
+<script src="../assets/js/bootstrap.bundle.min.js"></script>
+<script src="../assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+<script src="../assets/vendor/wow/wow.min.js"></script>
+<script src="../assets/js/theme.js"></script>
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
+<script>
+  // Firebase configuration (same as earlier)
+  const firebaseConfig = {
+    apiKey: "AIzaSyBpfkkOznjSvyyaEWNsG00huwlA8ObY6j8",
+    authDomain: "chat-80d74.firebaseapp.com",
+    databaseURL: "https://chat-80d74-default-rtdb.firebaseio.com",
+    projectId: "chat-80d74",
+    storageBucket: "chat-80d74.appspot.com",
+    messagingSenderId: "1085559718603",
+    appId: "1:1085559718603:web:c7a9a7f26b1535d080514e"
+  };
+
+  if (typeof firebase !== 'undefined' && !firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+  }
+
+  // Render posts into .news-grid (Grid ensures 3 per row and centers leftover)
+  function renderNewsGrid() {
+    var posts_div = document.getElementById('posts');
+    var fallback = document.getElementById('posts-fallback');
+    if (!posts_div) return;
+    if (fallback) fallback.style.display = 'none';
+
+    firebase.database().ref('news/').once('value').then(function(snapshot) {
+      var data = snapshot.val();
+      posts_div.innerHTML = ''; // clear grid
+
+      if (!data) {
+        posts_div.innerHTML = '<div class="text-center w-100" style="padding:40px 0;"><p>No news yet.</p></div>';
+        return;
+      }
+
+      Object.entries(data).forEach(function([key, value]) {
+        var imageURL = value.imageURL || '../assets/img/blog/blog_1.jpg';
+        var title = (value.title && value.title.length) ? value.title : ((value.text && value.text.length) ? value.text.substring(0, 70) : 'Untitled');
+        var excerpt = (value.text && value.text.length) ? (value.text.length > 120 ? value.text.slice(0,117) + '...' : value.text) : '';
+
+        // build card element
+        var card = document.createElement('article');
+        card.className = 'news-card card-blog';
+        card.innerHTML = `
+          <div class="header">
+            <div class="post-category"><a href="#">ახალი</a></div>
+            <a href="blog-details.html?post=${encodeURIComponent(key)}" class="post-thumb">
+              <img src="${imageURL}" alt="">
+            </a>
+          </div>
+          <div class="body">
+            <h5 class="post-title"><a href="blog-details.html?post=${encodeURIComponent(key)}">${title}</a></h5>
+            <p class="post-excerpt">${excerpt}</p>
+            <div class="site-info">
+              <div class="avatar mr-2">
+                <div class="avatar-img"><img src="../assets/img/person/person_1.jpg" alt=""></div>
+                <span>GeoPras</span>
+              </div>
+            </div>
+          </div>
+        `;
+        posts_div.appendChild(card);
+      });
+    }).catch(function(err){
+      console.error('Firebase read error:', err);
+      posts_div.innerHTML = '<div class="text-center w-100" style="padding:40px 0;"><p>Error loading news.</p></div>';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', renderNewsGrid);
+</script>
+
+</body>
+</html>
+<style>
+    .row.custom-center {
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: center !important;
+}
+
+
+</style>

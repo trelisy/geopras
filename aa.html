@@ -1,0 +1,78 @@
+<div class="container">
+  <h2 class="text-center wow fadeInUp">Upload New Post</h2>
+  <form id="uploadForm" class="mt-4">
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input type="text" id="title" class="form-control" placeholder="Enter post title" required>
+    </div>
+    <div class="form-group">
+      <label for="imageUpload">Choose Image</label>
+      <input type="file" id="imageUpload" class="form-control-file" accept="image/*" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Upload</button>
+  </form>
+  <div class="row mt-5" id="postsContainer"></div>
+</div>
+<style>
+/* Base Styles */
+.page-section {
+    padding: 50px 0;
+}
+
+.card-blog {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.card-blog img {
+    width: 100%;
+    height: auto;
+}
+
+.post-title a {
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.site-info {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+}
+
+.avatar-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.mai-time {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #999;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+/* Media Queries */
+@media (max-width: 767px) {
+    .col-lg-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+</style>

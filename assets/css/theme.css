@@ -21,6 +21,152 @@
   --grey: #6E807A;
 }
 
+/* === Improved foldable heading visuals & divider between columns === */
+
+/* Make the whole button area feel like a clickable card header */
+.about-toggle-first {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 0;               /* keep the h1 spacing similar to original */
+  border: 0;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Keep your original h1 look but slightly tighten margins */
+.about-heading {
+  font-size: 2rem;
+  line-height: 1.05;
+  margin: 0;
+  color: inherit;
+  font-weight: 700;
+}
+
+/* Big, visible plus icon (circular, shadowed) */
+.chev {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;              /* larger */
+  height: 44px;
+  margin-left: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  color: #0b66ff;          /* clear blue accent */
+  font-weight: 800;
+  font-size: 20px;
+  box-shadow: 0 6px 18px rgba(11,102,255,0.12), 0 1px 3px rgba(0,0,0,0.06);
+  border: 1px solid rgba(11,102,255,0.12);
+  transition: transform .22s ease, background .22s ease, box-shadow .22s ease;
+}
+
+/* Hover/Focus affordance */
+.about-toggle-first:hover .chev,
+.about-toggle-first:focus .chev {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(11,102,255,0.16);
+}
+
+/* When expanded: rotate the plus into a close-like X (45deg) and invert colors */
+.about-toggle-first[aria-expanded="true"] .chev {
+  transform: rotate(45deg) translateY(-1px);
+  background: #0b66ff;   /* filled with blue */
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(11,102,255,0.20);
+  border-color: rgba(255,255,255,0.12);
+}
+
+/* Collapsible content card style */
+.about-content-first {
+  margin-top: 12px;
+  padding: 18px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+.about-content-first p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+
+/* === Visual divider between the two columns === */
+.row.align-items-center { position: relative; }
+
+/* Vertical divider on larger screens (between left and right column) */
+@media (min-width: 992px) {
+  /* use pseudo element on row to avoid extra markup */
+  .row.align-items-center::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 6%;
+    bottom: 6%;
+    width: 1px;
+    transform: translateX(-50%);
+    background: linear-gradient(to bottom, rgba(0,0,0,0.06), rgba(0,0,0,0.02));
+    border-radius: 1px;
+    pointer-events: none;
+  }
+
+  /* add subtle padding so content doesn't touch the divider */
+  .col-lg-6 { padding-left: 2.25rem; padding-right: 2.25rem; }
+}
+
+/* On smaller screens show horizontal divider between sections */
+@media (max-width: 991px) {
+  .col-lg-6.py-3:first-child {
+    border-bottom: 1px solid rgba(15,23,42,0.04);
+    padding-bottom: 18px;
+    margin-bottom: 14px;
+  }
+
+  /* make chevron sit nicely on small screens */
+  .chev { width:40px; height:40px; font-size:18px; }
+}
+
+/* Optional: tiny polish for image column so it feels like a card */
+.img-place.custom-img-1 {
+  min-height: 180px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Accessibility: visible focus ring when tabbing */
+.about-toggle-first:focus { outline: none; }
+.about-toggle-first:focus-visible { box-shadow: 0 0 0 4px rgba(11,102,255,0.12); border-radius: 6px; }
+
+
+
+.section-separator {
+  width: 100%;
+  height: 10px; /* thicker */
+  margin: 35px 0;
+  background: linear-gradient(
+    to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,0.12),
+    rgba(0,0,0,0)
+  );
+  border-radius: 8px;
+}
+
+.about-content-wrapper {
+  padding: 22px;
+  border: 2px solid rgba(0,0,0,0.10); /* soft light border */
+  border-radius: 14px;                /* smooth rounded corners */
+  background: rgba(255,255,255,0.65); /* subtle blend background */
+  backdrop-filter: blur(3px);         /* optional soft blur */
+}
+
+
 body {
   font-family: "BPG Banner Caps", sans-serif;
 

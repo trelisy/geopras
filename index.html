@@ -21,6 +21,86 @@
 
   <link rel="stylesheet" href="assets/css/theme.css">
 </head>
+
+<!-- POP-UP -->
+<div id="myPopup" class="popup">
+  <div class="popup-content">
+    <span class="popup-close">&times;</span>
+    <h2>Welcome!</h2>
+    <p>This is your special message.</p>
+  </div>
+</div>
+
+<style>
+/* Full screen overlay */
+.popup {
+  display: none; /* hidden by default */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.6);
+}
+
+/* Pop-up box */
+.popup-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+  position: relative;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+}
+
+/* Close button */
+.popup-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #333;
+}
+
+.popup-close:hover {
+  color: #000;
+}
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+  var popup = document.getElementById("myPopup");
+  var closeBtn = document.querySelector(".popup-close");
+
+  // Check if pop-up has already been shown
+  if (!localStorage.getItem("popupShown")) {
+    popup.style.display = "block"; // show pop-up
+  }
+
+  // Close button
+  closeBtn.addEventListener("click", function() {
+    popup.style.display = "none";
+    localStorage.setItem("popupShown", "true"); // remember that pop-up was shown
+  });
+
+  // Optional: click outside the pop-up to close
+  window.addEventListener("click", function(e) {
+    if (e.target === popup) {
+      popup.style.display = "none";
+      localStorage.setItem("popupShown", "true");
+    }
+  });
+});
+
+</script>
+
 <body>
 
   <!-- Back to top button -->
@@ -66,7 +146,7 @@ body, html {
               <a class="nav-link" href="">ჩვენს შესახებ</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">ქირურგები</a>
+              <a class="nav-link" href="doctors.html">ქირურგები</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="">სიახლეები</a>
@@ -132,24 +212,44 @@ body, html {
       </div>
     </div> <!-- .page-section -->
 
+
+
+
+
+
+
+
     <div class="page-section pb-0">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
-            <h1>ჩვენს <br> შესახებ</h1>
-            <p class="text-grey mb-4">საქართველოს პლასტიკური, რეკონსტრუქციული და ესთეტიკური ქირურგიის საზოგადოება (GeoPRAS) დაარსდა 1999 წელს, აპრილში და არის წამყვანი პროფესიული ორგანიზაცია, რომელიც მიზნად ისახავს პლასტიკური, რეკონსტრუქციული და ესთეტიკური ქირურგიის განვითარების ხელშეწყობას საქართველოში.
-              საზოგადოების დამფუძნებლები  არიან ცნობილი ქირურგები: ივა კუზანოვი, კონსტანტინე მარდალეიშვილი, ბესიკ იაშვილი, ვახტანგ ხუციძე, გრიგოლ იოსელიანი, გიორგი ოდიშვილი, გელა გელაშვილი, ტრისტან პერაძე, ჯემალ ჯიკიძე, პაატა ჯანაშვილი, ტორნიკე ბეროზი, თიმურაზ კოპაძე, მარკ კაკეტელაშვილი და ომარ ნემსაძე. მათ შეიტანეს   მნიშვნელოვანი წვლილი ორგანიზაციის შექმნაში და განვითარებაში, ხოლო მათი პროფესიული სამედიცინო საქმიანობა  კვლავ  განაგრძობს  დარგის განვითარებაზე მინიშვნელოვან გავლენას.
-              დღეს, საზოგადოებას უკვე  ჰყავს მრავალი წევრი როგორც საქართველოში, ასევე უცხოეთში. საზოგადოება ხელს უწყობს და ეხმარება წევრებს პროფესიუილ კომუნიკაციაში, ცოდნის და გამოცდილების გაზიარებაში,  როგორც საქართველოში, ისე საერთაშორისო დონეზე.
-
-ჩვენ მიზანია დავეხმაროთ    წევრებს პროფესიულ განვითარებაში, უწყვეტი სამედიცინო განათლების, კვლევებისა და უახლესი ქირურგიული ტექნიკებისა და ტექნოლოგიების დანერგვის გზით.
-
- ჩვენ ვცდილობთ გავზარდოთ და განვავითაროთ ეს დინამიური და განვითარებადი სფერო.
+            <h1>პრეზიდენტის მიმართვა<br> </h1>
+            <p class="text-grey mb-4"> ძვირფასო კოლეგებო, პარტნიორებო და მეგობრებო,
+            GEOPRAS (საქართველოს პლასტიკური, რეკონსტრუქციული და
+            ესთეტიკური ქირურგიის საზოგადოება) არის პროფესიული,
+            არაკომერციული ორგანიზაცია, რომელიც აერთიანებს ქართველ
+            პლასტიკურ ქირურგებს და წარმოადგენს სპეციალობის
+            ეროვნულ პლატფორმას.
+            ჩვენი მიზნებია:
+             პლასტიკური და რეკონსტრუქციული ქირურგიის მაღალ
+            სტანდარტებზე ხელშეწყობა;
+             უწყვეტი სამედიცინო განათლებისა და სამეცნიერო
+            კვლევის მხარდაჭერა;
+             ეთიკური პრაქტიკისა და პაციენტის უსაფრთხოების
+            პოპულარიზაცია;
+             საერთაშორისო საზოგადოებებთან და ინსტიტუტებთან
+            თანამშრომლობის გაღრმავება.
+            GEOPRAS აქტიურად მონაწილეობს გლობალურ პროფესიულ
+            ინიციატივებში, მხარს უჭერს ახალგაზრდა ქირურგების
+            განათლებას და ემსახურება პლასტიკური ქირურგიის
+            განვითარებას საქართველოში.
+            ერთად ვქმნით პლასტიკური ქირურგიის მომავალს.
             </p>
-            <a href="about.html" class="btn btn-primary">მეტის ნახვა</a>
+            
           </div>
           <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
             <div class="img-place custom-img-1">
-              <!-- <img src="assets/img/bg-doctor.png" alt=""> -->
+              <img src="assets/img/doctors/Iva_Kuzanov-removebg-preview.png" alt="">
             </div>
           </div>
         </div>
@@ -157,194 +257,321 @@ body, html {
     </div> <!-- .bg-light -->
   </div> <!-- .bg-light -->
 
+
+  <div class="page-section pb-0">
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- LEFT: foldable "ჩვენს შესახებ" wrapped with soft border -->
+      <div class="col-lg-6 py-3 wow fadeInUp">
+
+        <div class="about-content-wrapper"> <!-- 🌟 NEW WRAPPER ADDED -->
+
+          <!-- Toggle button (accessible) -->
+          <button id="aboutToggleFirst" class="about-toggle-first" aria-expanded="false" aria-controls="aboutContentFirst">
+            <h1 class="about-heading">ჩვენს<br>შესახებ</h1>
+            <span class="chev" aria-hidden="true">+</span>
+          </button>
+
+          <!-- Collapsible content (hidden by default) -->
+          <div id="aboutContentFirst" class="about-content-first" hidden>
+            <p class="text-grey mb-4">
+             GEOPRAS (საქართველოს პლასტიკური, რეკონსტრუქციული და
+ესთეტიკური ქირურგიის საზოგადოება) არის პროფესიული,
+არაკომერციული ორგანიზაცია, რომელიც აერთიანებს ქართველ
+პლასტიკურ ქირურგებს და წარმოადგენს სპეციალობის
+ეროვნულ პლატფორმას.
+ჩვენი მიზნებია:
+ პლასტიკური და რეკონსტრუქციული ქირურგიის მაღალ
+სტანდარტებზე ხელშეწყობა;
+ უწყვეტი სამედიცინო განათლებისა და სამეცნიერო
+კვლევის მხარდაჭერა;
+
+ ეთიკური პრაქტიკისა და პაციენტის უსაფრთხოების
+პოპულარიზაცია;
+ საერთაშორისო საზოგადოებებთან და ინსტიტუტებთან
+თანამშრომლობის გაღრმავება.
+GEOPRAS აქტიურად მონაწილეობს გლობალურ პროფესიულ
+ინიციატივებში, მხარს უჭერს ახალგაზრდა ქირურგების
+განათლებას და ემსახურება პლასტიკური ქირურგიის
+განვითარების მხარდაჭერას საქართველოში.
+ერთად ვქმნით პლასტიკური ქირურგიის მომავალს.
+            </p>
+          </div>
+
+        </div> <!-- END WRAPPER -->
+
+        <!-- 🌟 SOFT THICK BLENDED SEPARATOR -->
+        
+
+      </div>
+
+      <!-- RIGHT COLUMN (unchanged) -->
+      <div class="col-lg-6 wow fadeInRight" data-wow-delay="400ms">
+        <div class="img-place custom-img-1"></div>
+      </div>
+
+      
+
+    </div>
+    
+  </div>
+  
+</div> <!-- .page-section -->
+
+
   <div class="page-section">
     <div class="container">
       <h1 class="text-center mb-5 wow fadeInUp">ასოციაციის წევრები</h1>
 
       <div class="owl-carousel wow fadeInUp" id="doctorSlideshow">
-        <div class="item">
-          <div class="card-doctor">
-            <div class="header">
-              <img src="assets/img/doctors/IMG_5908.jpg" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
-            </div>
-            <div class="body">
-              <p class="text-xl mb-0">აკაკი წილოსანი</p>
-              <span class="text-sm text-grey">+995 599 75 42 75</span>
-              <span class="text-sm text-grey">ა.წილოსანის თმის  გადანერგვის  ინსტიტუტი 
-              </span>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="card-doctor">
-            <div class="header">
-              <img src="assets/img/doctors/01 a.jpg" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
-            </div>
-            <div class="body">
-              <p class="text-xl mb-0">ზურაბ ხუციძე</p>
-              <span class="text-sm text-grey">+995 595 58 85 01</span>
-              <span class="text-sm text-grey">პლასტიკური ქირურგიის კლინიკა "წოპე"</span>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="card-doctor">
-            <div class="header">
-              <img src="assets/img/doctors/6634949f-0074-406f-b9f6-92f4b599e257.jpg" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
-            </div>
-            <div class="body">
-              <p class="text-xl mb-0">თინათინ კოპალეიშვილი</p>
-              <span class="text-sm text-grey">+995 555 40 20 20</span>
-              <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="card-doctor">
-            <div class="header">
-              <img src="assets/img/doctors/Copy of TONI9206.JPG" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
-            </div>
-            
-            <div class="body">
-              <p class="text-xl mb-0">პაატა ჯანაშია</p>
-           
-              <span class="text-sm text-grey">+995 577 77 71  30</span>
-              <span class="text-sm text-grey">წმ. იოანე მოწყალის სახ. კლინიკა</span>
-            </div>
-          </div>
-        </div>
-        <div class="item">
-          <div class="card-doctor">
-            <div class="header">
-              <img src="assets/img/doctors/image0 (3).jpeg" alt="">
-              <div class="meta">
-                <a href="#"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
-              </div>
-            </div>
-            <div class="body">
-              <p class="text-xl mb-0">თამარ ზამთარაძე</p>
-              <span class="text-sm text-grey">+995 599 11 46 60</span>
-              <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
-            </div>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/DR_Lika Kakachishvili.jpg" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">ლიკა კაკაჩიშვილი</p>
-            <span class="text-sm text-grey">+995 555 40 20 20</span>
-            <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/IMG_1307.JPG" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">არჩილ შათირიშვილი</p>
-            <span class="text-sm text-grey">+995 595 35 06 60</span>
-            <span class="text-sm text-grey"></span>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/unnamed.jpg" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">გიორგი სულამანიძე</p>
-            <span class="text-sm text-grey">+995 595 59 20 20</span>
-            <span class="text-sm text-grey"></span>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/unnamed (1).jpg" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">მარიამ ზურაბაშვილი</p>
-            <span class="text-sm text-grey">+995 558 39 29 00</span>
-            <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/2016-05-21 15.05.00.jpg" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">გრიგოლ იოსელიანი</p>
-            <span class="text-sm text-grey">+995 599 94 94 49</span>
-            <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/IMG-20240110-WA0004.jpg" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">თეიმურაზ გურჯიძე</p>
-            <span class="text-sm text-grey">+995 551 94 02 80</span>
-            <span class="text-sm text-grey">ავერსის კლინიკა</span>
-          </div>
-        </div>
-        <div class="card-doctor">
-          <div class="header">
-            <img src="assets/img/doctors/unnamed (2).jpg" alt="">
-            <div class="meta">
-              <a href="#"><span class="mai-call"></span></a>
-              <a href="#"><span class="mai-logo-whatsapp"></span></a>
-            </div>
-          </div>
-          <div class="body">
-            <p class="text-xl mb-0">ვახტანგ პეტრიაშვილი</p>
-            <span class="text-sm text-grey">+995 555 75 50 00</span>
-            <span class="text-sm text-grey"></span>
-          </div>
+
+  <!-- აკაკი წილოსანი -->
+  <div class="item">
+    <div class="card-doctor">
+      <div class="header">
+        <img src="assets/img/doctors/IMG_5908.jpg" alt="">
+        <div class="meta">
+          <a href="#"><span class="mai-call"></span></a>
+          <a href="#"><span class="mai-logo-whatsapp"></span></a>
         </div>
       </div>
+      <div class="body">
+        <p class="text-xl mb-0">აკაკი წილოსანი</p>
+        <span class="text-sm text-grey">+995 599 75 42 75</span>
+        <span class="text-sm text-grey">ა.წილოსანის თმის გადანერგვის ინსტიტუტი</span>
+      </div>
     </div>
+  </div>
+
+  <!-- არჩილ შათირიშვილი -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/IMG_1307.JPG" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">არჩილ შათირიშვილი</p>
+      <span class="text-sm text-grey">+995 595 35 06 60</span>
+    </div>
+  </div>
+
+  <!-- გიორგი ძაგნიძე -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/Screenshot (142).png" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">გიორგი ძაგნიძე</p>
+      <span class="text-sm text-grey">+995 99 51 06 60</span>
+    </div>
+  </div>
+
+  <!-- გიორგი სულამანიძე -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/unnamed.jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">გიორგი სულამანიძე</p>
+      <span class="text-sm text-grey">+995 595 59 20 20</span>
+    </div>
+  </div>
+
+  <!-- გრიგოლ იოსელიანი -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/2016-05-21 15.05.00.jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">გრიგოლ იოსელიანი</p>
+      <span class="text-sm text-grey">+995 599 94 94 49</span>
+      <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
+    </div>
+  </div>
+ <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/unnamed (2).jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">ვახტანგ პეტრიაშვილი</p>
+      <span class="text-sm text-grey">+995 555 75 50 00</span>
+    </div>
+  </div>
+  <!-- ზურაბ ხუციძე -->
+  <div class="item">
+    <div class="card-doctor">
+      <div class="header">
+        <img src="assets/img/doctors/01 a.jpg" alt="">
+        <div class="meta">
+          <a href="#"><span class="mai-call"></span></a>
+          <a href="#"><span class="mai-logo-whatsapp"></span></a>
+        </div>
+      </div>
+      <div class="body">
+        <p class="text-xl mb-0">ზურაბ ხუციძე</p>
+        <span class="text-sm text-grey">+995 595 58 85 01</span>
+        <span class="text-sm text-grey">პლასტიკური ქირურგიის კლინიკა "წოპე"</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- თინათინ კოპალეიშვილი -->
+  <div class="item">
+    <div class="card-doctor">
+      <div class="header">
+        <img src="assets/img/doctors/6634949f-0074-406f-b9f6-92f4b599e257.jpg" alt="">
+        <div class="meta">
+          <a href="#"><span class="mai-call"></span></a>
+          <a href="#"><span class="mai-logo-whatsapp"></span></a>
+        </div>
+      </div>
+      <div class="body">
+        <p class="text-xl mb-0">თინათინ კოპალეიშვილი</p>
+        <span class="text-sm text-grey">+995 555 40 20 20</span>
+        <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- თეიმურაზ გურჯიძე -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/IMG-20240110-WA0004.jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">თეიმურაზ გურჯიძე</p>
+      <span class="text-sm text-grey">+995 551 94 02 80</span>
+      <span class="text-sm text-grey">ავერსის კლინიკა</span>
+    </div>
+  </div>
+
+  <!-- თამარ ზამთარაძე -->
+  <div class="item">
+    <div class="card-doctor">
+      <div class="header">
+        <img src="assets/img/doctors/image0 (3).jpeg" alt="">
+        <div class="meta">
+          <a href="#"><span class="mai-call"></span></a>
+          <a href="#"><span class="mai-logo-whatsapp"></span></a>
+        </div>
+      </div>
+      <div class="body">
+        <p class="text-xl mb-0">თამარ ზამთარაძე</p>
+        <span class="text-sm text-grey">+995 599 11 46 60</span>
+        <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ლიკა კაკაჩიშვილი -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/DR_Lika Kakachishvili.jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">ლიკა კაკაჩიშვილი</p>
+      <span class="text-sm text-grey">+995 555 40 20 20</span>
+      <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
+    </div>
+  </div>
+
+  <!-- ლაშა ოსეფაიშვილი -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/Screenshot_20210529-065001_Gmail-removebg-preview (1).png" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">ლაშა ოსეფაიშვილი</p>
+      <span class="text-sm text-grey">032 2157777</span>
+      <span class="text-sm text-grey">კლინიკა ლიდერმედი</span>
+    </div>
+  </div>
+
+  <!-- მარიამ ზურაბაშვილი -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/unnamed (1).jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">მარიამ ზურაბაშვილი</p>
+      <span class="text-sm text-grey">+995 558 39 29 00</span>
+      <span class="text-sm text-grey">კუზანოვის კლინიკა</span>
+    </div>
+  </div>
+
+  <!-- ნოდარ ბრუნჯაძე -->
+  <div class="card-doctor">
+    <div class="header">
+      <img src="assets/img/doctors/unnamed (3).jpg" alt="">
+      <div class="meta">
+        <a href="#"><span class="mai-call"></span></a>
+        <a href="#"><span class="mai-logo-whatsapp"></span></a>
+      </div>
+    </div>
+    <div class="body">
+      <p class="text-xl mb-0">ნოდარ ბრუნჯაძე</p>
+    </div>
+  </div>
+
+  <!-- პაატა ჯანაშია -->
+  <div class="item">
+    <div class="card-doctor">
+      <div class="header">
+        <img src="assets/img/doctors/Copy of TONI9206.JPG" alt="">
+        <div class="meta">
+          <a href="#"><span class="mai-call"></span></a>
+          <a href="#"><span class="mai-logo-whatsapp"></span></a>
+        </div>
+      </div>
+      <div class="body">
+        <p class="text-xl mb-0">პაატა ჯანაშია</p>
+        <span class="text-sm text-grey">+995 577 77 71 30</span>
+        <span class="text-sm text-grey">წმ. იოანე მოწყალის სახ. კლინიკა</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ვახტანგ პეტრიაშვილი -->
+ 
+
+</div>
+
   </div>
 
   <div class="page-section bg-light">
@@ -498,9 +725,9 @@ body, html {
         </div> -->
         <div class="col-sm-6 col-lg-3 py-3">
           <h5>კონტაქტი</h5>
-          <p class="footer-link mt-2">ევა ბრაუნის ქუჩა N45</p>
+          <p class="footer-link mt-2">ვიღაცის ქუჩა N რაღაც</p>
           <a href="#" class="footer-link">5555555555</a>
-          <a href="#" class="footer-link">მამუკა@მამუკა.მამ</a>
+          <a href="#" class="footer-link">inf0@info.geopras</a>
 
           <h5 class="mt-3">სოციალური მედია</h5>
           <div class="footer-sosmed mt-3">
@@ -528,6 +755,44 @@ body, html {
 <script src="assets/vendor/wow/wow.min.js"></script>
 
 <script src="assets/js/theme.js"></script>
+<script>
+  (function($){
+    $(document).ready(function(){
+      var $btn = $('#aboutToggleFirst');
+      var $content = $('#aboutContentFirst');
+
+      // Initialize collapsed
+      $content.hide().attr('hidden', true);
+      $btn.attr('aria-expanded', 'false');
+
+      // Toggle function
+      function toggleAbout() {
+        var expanded = $btn.attr('aria-expanded') === 'true';
+        $btn.attr('aria-expanded', (!expanded).toString());
+        if (!expanded) {
+          $content.attr('hidden', false).stop(true,true).slideDown(280);
+        } else {
+          $content.stop(true,true).slideUp(220, function(){ $content.attr('hidden', true); });
+        }
+      }
+
+      // Click
+      $btn.on('click', function(e){
+        e.preventDefault();
+        toggleAbout();
+      });
+
+      // Keyboard (Enter or Space)
+      $btn.on('keydown', function(e){
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+          e.preventDefault();
+          toggleAbout();
+        }
+      });
+    });
+  })(jQuery);
+</script>
+
   
 </body>
 </html>
