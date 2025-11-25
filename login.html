@@ -191,7 +191,7 @@
 						const user = auth.currentUser;
 						database.ref('users/' + user.uid).update({ last_login: Date.now() });
 						
-						window.location.href = 'account.html';
+						window.location.href = 'console.html';
 					})
 					.catch((error) => {
 						alert(error.message);
