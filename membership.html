@@ -14,7 +14,6 @@
   <link rel="stylesheet" href="assets/css/theme.css">
   <link rel="stylesheet" href="assets/css/custom-styles.css">
   
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -26,7 +25,6 @@
       padding: 40px;
       box-shadow: 0 5px 25px rgba(0,0,0,0.1);
     }
-    
     .form-section-title {
       font-size: 1.3rem;
       font-weight: 600;
@@ -36,32 +34,28 @@
       border-bottom: 2px solid var(--geopras-primary);
       font-family: var(--font-heading);
     }
-    
     .form-group {
       margin-bottom: 20px;
     }
-    
     .form-label {
       font-weight: 600;
       color: var(--geopras-secondary);
       margin-bottom: 8px;
       display: block;
     }
-    
     .form-control {
       border: 2px solid #e2e8f0;
       border-radius: 8px;
       padding: 12px 16px;
       font-size: 1rem;
       transition: all 0.3s ease;
+      width: 100%;
     }
-    
     .form-control:focus {
       border-color: var(--geopras-primary);
       box-shadow: 0 0 0 3px rgba(0, 159, 217, 0.1);
       outline: none;
     }
-    
     .file-upload-wrapper {
       border: 2px dashed #cbd5e0;
       border-radius: 8px;
@@ -71,38 +65,31 @@
       transition: all 0.3s ease;
       background: #f7fafc;
     }
-    
     .file-upload-wrapper:hover {
       border-color: var(--geopras-primary);
       background: white;
     }
-    
     .file-upload-wrapper input[type="file"] {
       display: none;
     }
-    
     .file-upload-label {
       cursor: pointer;
       color: var(--geopras-text-light);
     }
-    
     .file-upload-label i {
       font-size: 2rem;
       color: var(--geopras-primary);
       margin-bottom: 10px;
       display: block;
     }
-    
     .file-name-display {
       margin-top: 10px;
       color: var(--geopras-primary);
       font-weight: 500;
     }
-
     .required {
       color: #e53e3e;
     }
-    
     .success-message {
       background: #48bb78;
       color: white;
@@ -112,7 +99,6 @@
       display: none;
       margin-bottom: 20px;
     }
-    
     .error-message {
       background: #f56565;
       color: white;
@@ -122,7 +108,6 @@
       display: none;
       margin-bottom: 20px;
     }
-
     #submitBtn {
       background: linear-gradient(135deg, #009fd9 0%, #007ab8 100%) !important;
       color: white !important;
@@ -137,12 +122,10 @@
       display: block !important;
       transition: all 0.3s ease !important;
     }
-
     #submitBtn:hover {
       transform: translateY(-2px) !important;
       box-shadow: 0 8px 16px rgba(0, 159, 217, 0.3) !important;
     }
-
     #submitBtn:disabled {
       opacity: 0.7 !important;
       cursor: not-allowed !important;
@@ -152,7 +135,6 @@
 </head>
 
 <body>
-  <!-- Back to top button -->
   <div class="back-to-top"></div>
 
   <header>
@@ -161,44 +143,29 @@
         <a class="navbar-brand" href="index.html">
           <img src="assets/logoGeopras.jpg" alt="GeoPRAS Logo" height="50" class="logo-img">
         </a>
-
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">მთავარი</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">ჩვენს შესახებ</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="doctors.html">ქირურგები</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="index.html">მთავარი</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">ჩვენს შესახებ</a></li>
+            <li class="nav-item"><a class="nav-link" href="doctors.html">ქირურგები</a></li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                განათლება
-              </a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">განათლება</a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="events.html">ღონისძიებები</a>
                 <a class="dropdown-item" href="articles.html">სტატიები</a>
               </div>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="">კონტაქტი პაციენტებისთვის</a>
-            </li>
-            <li class="nav-item active">
-              <a class="btn btn-primary ml-lg-3" href="membership.html">გახდი წევრი</a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="">კონტაქტი პაციენტებისთვის</a></li>
+            <li class="nav-item active"><a class="btn btn-primary ml-lg-3" href="membership.html">გახდი წევრი</a></li>
           </ul>
         </div>
       </div>
     </nav>
   </header>
 
-  <!-- Page Header -->
   <div class="page-banner overlay-dark bg-image" style="background-image: url(assets/img/bg_image_1.jpg);">
     <div class="banner-section">
       <div class="container text-center">
@@ -213,17 +180,16 @@
     </div>
   </div>
 
-  <!-- Membership Form Section -->
   <div class="page-section">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-lg-8">
-          
+
           <div id="successMessage" class="success-message">
             <h4>წარმატებით გაიგზავნა!</h4>
             <p>თქვენი განაცხადი მიღებულია. ჩვენ დაგიკავშირდებით უახლოეს დროში.</p>
           </div>
-          
+
           <div id="errorMessage" class="error-message">
             <h4>შეცდომა!</h4>
             <p id="errorText"></p>
@@ -231,26 +197,29 @@
 
           <div class="membership-form">
             <h2 class="form-section-title">პირადი ინფორმაცია</h2>
-            
-            <form id="membershipForm">
+
+            <form id="membershipForm" name="membership" method="POST" data-netlify="true" netlify-honeypot="bot-field" enctype="multipart/form-data">
+              <input type="hidden" name="form-name" value="membership">
+              <p style="display:none;"><input name="bot-field"></p>
+
               <div class="form-group">
                 <label class="form-label">სახელი და გვარი <span class="required">*</span></label>
-                <input type="text" class="form-control" id="fullName" placeholder="შეიყვანეთ სახელი და გვარი" required>
+                <input type="text" class="form-control" name="სახელი-და-გვარი" id="fullName" placeholder="შეიყვანეთ სახელი და გვარი" required>
               </div>
 
               <div class="form-group">
                 <label class="form-label">პირადი ნომერი <span class="required">*</span></label>
-                <input type="text" class="form-control" id="ID" placeholder="შეიყვანეთ პირადი ნომერი" required>
+                <input type="text" class="form-control" name="პირადი-ნომერი" id="ID" placeholder="შეიყვანეთ პირადი ნომერი" required>
               </div>
 
               <div class="form-group">
                 <label class="form-label">ტელეფონის ნომერი <span class="required">*</span></label>
-                <input type="tel" class="form-control" id="phone" placeholder="+995 XXX XX XX XX" required>
+                <input type="tel" class="form-control" name="ტელეფონი" id="phone" placeholder="+995 XXX XX XX XX" required>
               </div>
 
               <div class="form-group">
                 <label class="form-label">მოქალაქეობა <span class="required">*</span></label>
-                <select class="form-control" id="citizenship" required>
+                <select class="form-control" name="მოქალაქეობა" id="citizenship" required>
                   <option value="">აირჩიეთ მოქალაქეობა</option>
                   <option value="საქართველო">საქართველო</option>
                   <option value="აზერბაიჯანი">აზერბაიჯანი</option>
@@ -277,17 +246,17 @@
 
               <div class="form-group">
                 <label class="form-label">ნებადართული სპეციალობა <span class="required">*</span></label>
-                <input type="text" class="form-control" id="specialty" placeholder="მაგ: პლასტიკური ქირურგია" required>
+                <input type="text" class="form-control" name="სპეციალობა" id="specialty" placeholder="მაგ: პლასტიკური ქირურგია" required>
               </div>
 
               <div class="form-group">
                 <label class="form-label">სახელმწიფო სერტიფიკატი <span class="required">*</span></label>
                 <div class="file-upload-wrapper" onclick="document.getElementById('certificate').click()">
-                  <input type="file" id="certificate" accept=".pdf,.jpg,.jpeg,.png" required multiple onchange="displayFileName(this, 'certificateFileName')">
+                  <input type="file" id="certificate" name="სერტიფიკატი" accept=".pdf,.jpg,.jpeg,.png" required multiple onchange="displayFileName(this, 'certificateFileName')">
                   <label class="file-upload-label">
                     <i class="mai-cloud-upload"></i>
                     <div>ატვირთეთ სერტიფიკატი</div>
-                    <small>PDF, JPG, PNG (მაქს. 10MB) — შესაძლებელია რამდენიმე ფაილი</small>
+                    <small>PDF, JPG, PNG — შესაძლებელია რამდენიმე ფაილი</small>
                   </label>
                 </div>
                 <div id="certificateFileName" class="file-name-display"></div>
@@ -296,19 +265,17 @@
               <div class="form-group">
                 <label class="form-label">ფოტო <span class="required">*</span></label>
                 <div class="file-upload-wrapper" onclick="document.getElementById('photo').click()">
-                  <input type="file" id="photo" accept="image/*" required onchange="displayFileName(this, 'photoFileName')">
+                  <input type="file" id="photo" name="ფოტო" accept="image/*" required onchange="displayFileName(this, 'photoFileName')">
                   <label class="file-upload-label">
                     <i class="mai-image"></i>
                     <div>ატვირთეთ ფოტო</div>
-                    <small>JPG, PNG (მაქს. 5MB)</small>
+                    <small>JPG, PNG</small>
                   </label>
                 </div>
                 <div id="photoFileName" class="file-name-display"></div>
               </div>
 
-              <button type="submit" id="submitBtn">
-                განაცხადის გაგზავნა
-              </button>
+              <button type="submit" id="submitBtn">განაცხადის გაგზავნა</button>
             </form>
           </div>
         </div>
@@ -316,7 +283,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer class="page-footer">
     <div class="container">
       <div class="row px-md-3">
@@ -341,7 +307,6 @@
           <p class="footer-link mt-2">ვიღაცის ქუჩა N რაღაც</p>
           <a href="#" class="footer-link">5555555555</a>
           <a href="#" class="footer-link">inf0@info.geopras</a>
-
           <h5 class="mt-3">სოციალური მედია</h5>
           <div class="footer-sosmed mt-3">
             <a href="#" target="_blank"><span class="mai-logo-facebook-f"></span></a>
@@ -352,14 +317,11 @@
           </div>
         </div>
       </div>
-
       <hr>
-
       <p id="copyright">Copyright &copy; 2025 <a href="#" target="_blank">Treliazori</a>. All right reserved</p>
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
@@ -397,38 +359,21 @@
         return;
       }
 
-      const formData = new FormData();
-
-      formData.append('access_key', '219b6219-834e-4362-8858-1f207c547b0f');
-      formData.append('subject', 'ახალი წევრობის განაცხადი - GeoPRAS');
-
-      formData.append('სახელი და გვარი', document.getElementById('fullName').value);
-      formData.append('პირადი ნომერი', document.getElementById('ID').value);
-      formData.append('ტელეფონი', document.getElementById('phone').value);
-      formData.append('მოქალაქეობა', document.getElementById('citizenship').value);
-      formData.append('სპეციალობა', document.getElementById('specialty').value);
-
-      for (const file of certificateFiles) {
-        formData.append('სერტიფიკატი', file, file.name);
-      }
-
-      formData.append('ფოტო', photoFile, photoFile.name);
-
       try {
-        const response = await fetch('https://api.web3forms.com/submit', {
+        const formData = new FormData(this);
+
+        const response = await fetch('/', {
           method: 'POST',
           body: formData
         });
 
-        const result = await response.json();
-
-        if (result.success) {
+        if (response.ok) {
           showSuccess();
           document.getElementById('membershipForm').reset();
           document.getElementById('certificateFileName').innerHTML = '';
           document.getElementById('photoFileName').innerHTML = '';
         } else {
-          showError('შეცდომა: ' + (result.message || 'გთხოვთ სცადოთ თავიდან'));
+          showError('შეცდომა: გთხოვთ სცადოთ თავიდან');
         }
       } catch (error) {
         showError('შეცდომა: ' + error.message);
