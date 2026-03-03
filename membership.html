@@ -98,26 +98,7 @@
       color: var(--geopras-primary);
       font-weight: 500;
     }
-    
-    .submit-btn {
-      background: linear-gradient(135deg, var(--geopras-primary) 0%, #007ab8 100%);
-      color: white;
-      border: none;
-      padding: 16px 40px;
-      border-radius: 10px;
-      font-weight: 600;
-      font-size: 1.1rem;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-      margin-top: 20px;
-    }
-    
-    .submit-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 16px rgba(0, 159, 217, 0.3);
-    }
-    
+
     .required {
       color: #e53e3e;
     }
@@ -140,6 +121,32 @@
       text-align: center;
       display: none;
       margin-bottom: 20px;
+    }
+
+    #submitBtn {
+      background: linear-gradient(135deg, #009fd9 0%, #007ab8 100%) !important;
+      color: white !important;
+      border: none !important;
+      padding: 16px 40px !important;
+      border-radius: 10px !important;
+      font-weight: 600 !important;
+      font-size: 1.1rem !important;
+      cursor: pointer !important;
+      width: 100% !important;
+      margin-top: 20px !important;
+      display: block !important;
+      transition: all 0.3s ease !important;
+    }
+
+    #submitBtn:hover {
+      transform: translateY(-2px) !important;
+      box-shadow: 0 8px 16px rgba(0, 159, 217, 0.3) !important;
+    }
+
+    #submitBtn:disabled {
+      opacity: 0.7 !important;
+      cursor: not-allowed !important;
+      transform: none !important;
     }
   </style>
 </head>
@@ -180,7 +187,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="">კონტაქტი</a>
+              <a class="nav-link" href="">კონტაქტი პაციენტებისთვის</a>
             </li>
             <li class="nav-item active">
               <a class="btn btn-primary ml-lg-3" href="membership.html">გახდი წევრი</a>
@@ -232,6 +239,11 @@
               </div>
 
               <div class="form-group">
+                <label class="form-label">პირადი ნომერი <span class="required">*</span></label>
+                <input type="text" class="form-control" id="ID" placeholder="შეიყვანეთ პირადი ნომერი" required>
+              </div>
+
+              <div class="form-group">
                 <label class="form-label">ტელეფონის ნომერი <span class="required">*</span></label>
                 <input type="tel" class="form-control" id="phone" placeholder="+995 XXX XX XX XX" required>
               </div>
@@ -268,14 +280,14 @@
                 <input type="text" class="form-control" id="specialty" placeholder="მაგ: პლასტიკური ქირურგია" required>
               </div>
 
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label class="form-label">სახელმწიფო სერტიფიკატი <span class="required">*</span></label>
                 <div class="file-upload-wrapper" onclick="document.getElementById('certificate').click()">
-                  <input type="file" id="certificate" accept=".pdf,.jpg,.jpeg,.png" required onchange="displayFileName(this, 'certificateFileName')">
+                  <input type="file" id="certificate" accept=".pdf,.jpg,.jpeg,.png" required multiple onchange="displayFileName(this, 'certificateFileName')">
                   <label class="file-upload-label">
                     <i class="mai-cloud-upload"></i>
                     <div>ატვირთეთ სერტიფიკატი</div>
-                    <small>PDF, JPG, PNG (მაქს. 10MB)</small>
+                    <small>PDF, JPG, PNG (მაქს. 10MB) — შესაძლებელია რამდენიმე ფაილი</small>
                   </label>
                 </div>
                 <div id="certificateFileName" class="file-name-display"></div>
@@ -292,10 +304,10 @@
                   </label>
                 </div>
                 <div id="photoFileName" class="file-name-display"></div>
-              </div>
+              </div> -->
 
-              <button type="submit" class="submit-btn">
-                <i class="mai-send"></i> განაცხადის გაგზავნა
+              <button type="submit" id="submitBtn">
+                განაცხადის გაგზავნა
               </button>
             </form>
           </div>
@@ -353,81 +365,88 @@
   <script src="assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
   <script src="assets/vendor/wow/wow.min.js"></script>
   <script src="assets/js/theme.js"></script>
-  
-  <!-- Firebase SDK -->
-  <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase.js"></script>
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyBpfkkOznjSvyyaEWNsG00huwlA8ObY6j8",
-      authDomain: "chat-80d74.firebaseapp.com",
-      databaseURL: "https://chat-80d74-default-rtdb.firebaseio.com",
-      projectId: "chat-80d74",
-      storageBucket: "chat-80d74.appspot.com",
-      messagingSenderId: "1085559718603",
-      appId: "1:1085559718603:web:c7a9a7f26b1535d080514e"
-    };
-    firebase.initializeApp(firebaseConfig);
 
+  <script>
     function displayFileName(input, displayId) {
       const display = document.getElementById(displayId);
       if (input.files.length > 0) {
-        display.textContent = '📎 ' + input.files[0].name;
+        const names = Array.from(input.files).map(f => '📎 ' + f.name).join('<br>');
+        display.innerHTML = names;
       }
     }
 
     document.getElementById('membershipForm').addEventListener('submit', async function(e) {
       e.preventDefault();
-      
-      const fullName = document.getElementById('fullName').value;
-      const phone = document.getElementById('phone').value;
-      const citizenship = document.getElementById('citizenship').value;
-      const specialty = document.getElementById('specialty').value;
-      const certificateFile = document.getElementById('certificate').files[0];
+
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '⏳ იგზავნება...';
+
+      const certificateFiles = document.getElementById('certificate').files;
       const photoFile = document.getElementById('photo').files[0];
 
-      if (!certificateFile || !photoFile) {
-        showError('გთხოვთ ატვირთოთ ყველა საჭირო ფაილი');
+      if (certificateFiles.length === 0) {
+        showError('გთხოვთ ატვირთოთ სახელმწიფო სერტიფიკატი');
+        resetBtn();
         return;
       }
 
+      if (!photoFile) {
+        showError('გთხოვთ ატვირთოთ ფოტო');
+        resetBtn();
+        return;
+      }
+
+      const formData = new FormData();
+
+      formData.append('access_key', '219b6219-834e-4362-8858-1f207c547b0f');
+      formData.append('subject', 'ახალი წევრობის განაცხადი - GeoPRAS');
+
+      formData.append('სახელი და გვარი', document.getElementById('fullName').value);
+      formData.append('პირადი ნომერი', document.getElementById('ID').value);
+      formData.append('ტელეფონი', document.getElementById('phone').value);
+      formData.append('მოქალაქეობა', document.getElementById('citizenship').value);
+      formData.append('სპეციალობა', document.getElementById('specialty').value);
+
+      for (const file of certificateFiles) {
+        formData.append('სერტიფიკატი', file, file.name);
+      }
+
+      formData.append('ფოტო', photoFile, photoFile.name);
+
       try {
-        // Upload certificate
-        const certificateRef = firebase.storage().ref('certificates/' + Date.now() + '_' + certificateFile.name);
-        await certificateRef.put(certificateFile);
-        const certificateURL = await certificateRef.getDownloadURL();
-
-        // Upload photo
-        const photoRef = firebase.storage().ref('member-photos/' + Date.now() + '_' + photoFile.name);
-        await photoRef.put(photoFile);
-        const photoURL = await photoRef.getDownloadURL();
-
-        // Save to database
-        await firebase.database().ref('membership-applications/').push().set({
-          fullName: fullName,
-          phone: phone,
-          citizenship: citizenship,
-          specialty: specialty,
-          certificateURL: certificateURL,
-          photoURL: photoURL,
-          timestamp: Date.now(),
-          status: 'pending'
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: formData
         });
 
-        showSuccess();
-        document.getElementById('membershipForm').reset();
-        document.getElementById('certificateFileName').textContent = '';
-        document.getElementById('photoFileName').textContent = '';
+        const result = await response.json();
 
+        if (result.success) {
+          showSuccess();
+          document.getElementById('membershipForm').reset();
+          document.getElementById('certificateFileName').innerHTML = '';
+          document.getElementById('photoFileName').innerHTML = '';
+        } else {
+          showError('შეცდომა: ' + (result.message || 'გთხოვთ სცადოთ თავიდან'));
+        }
       } catch (error) {
         showError('შეცდომა: ' + error.message);
       }
+
+      resetBtn();
     });
+
+    function resetBtn() {
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = false;
+      submitBtn.innerHTML = 'განაცხადის გაგზავნა';
+    }
 
     function showSuccess() {
       document.getElementById('successMessage').style.display = 'block';
       document.getElementById('errorMessage').style.display = 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      
       setTimeout(() => {
         document.getElementById('successMessage').style.display = 'none';
       }, 5000);
@@ -438,12 +457,11 @@
       document.getElementById('errorMessage').style.display = 'block';
       document.getElementById('successMessage').style.display = 'none';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-      
       setTimeout(() => {
         document.getElementById('errorMessage').style.display = 'none';
       }, 5000);
     }
   </script>
-  
+
 </body>
 </html>
