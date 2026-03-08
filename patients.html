@@ -172,7 +172,7 @@
               </div>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="patients.html">პაციენტებისთვის</a>
+              <a class="nav-link" href="">პაციენტებისთვის</a>
             </li>
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="membership.html">გახდი წევრი</a>
@@ -194,7 +194,7 @@
             <li class="breadcrumb-item active" aria-current="page">ღონისძიებები</li>
           </ol>
         </nav>
-        <h1 class="hero-title">ღონისძიებები</h1>
+        <h1 class="hero-title">პაციენტებისთვის</h1>
       </div>
     </div>
   </div>
@@ -296,7 +296,7 @@
         const data = snapshot.val();
         
         if (!data) {
-          eventsContainer.innerHTML = '<div class="col-12"><div class="no-events">ჯერჯერობით ღონისძიებები არ არის</div></div>';
+          eventsContainer.innerHTML = '<div class="col-12"><div class="no-events"></div></div>';
           return;
         }
         
